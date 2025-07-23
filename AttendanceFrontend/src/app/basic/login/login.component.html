@@ -1,0 +1,12 @@
+<div class="center-form">
+         <h2>Digite sus Credenciales</h2>
+         <form nz-form class="coustom-form" [formGroup]="loginForm">
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Porfavor ingrese su correo">
+                    <nz-input-group nzPrefixIcon="user">
+                        <input nz-input formControlName="email" placeholder="Correo electrónico" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+         </form>
+</div>
