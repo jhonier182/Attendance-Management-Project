@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { NgZorroAntdModule } from '../NgZorroAntdModule';
 
 
@@ -17,6 +17,7 @@ import { NgZorroAntdModule } from '../NgZorroAntdModule';
     RouterLink,
     RouterOutlet,
     NgZorroAntdModule,
+    RouterModule
   ],
   exports:[
     CommonModule,
@@ -25,7 +26,8 @@ import { NgZorroAntdModule } from '../NgZorroAntdModule';
     HttpClientModule,
     RouterLink,
     RouterOutlet,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+    RouterModule
   ]
 })
 export class SharedModule { }

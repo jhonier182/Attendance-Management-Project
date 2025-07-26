@@ -1,11 +1,23 @@
 <div class="center-form">
-         <h2>Digite sus Credenciales</h2>
-         <form nz-form class="coustom-form" [formGroup]="loginForm">
+         <h2 class="login-title">Digite sus Credenciales</h2>
+         <form nz-form [formGroup]="loginForm" class="login-form" (ngSubmit)="submitForm()">
             <nz-form-item>
                 <nz-form-control nzErrorTip="Porfavor ingrese su correo">
                     <nz-input-group nzPrefixIcon="user">
-                        <input nz-input formControlName="email" placeholder="Correo electrónico" />
+                        <input nz-input formControlName="email" placeholder="Correo electrónico" class="custom-input"/>
                     </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Porfavor ingrese su contraseña">
+                    <nz-input-group nzPrefixIcon="lock">
+                        <input nz-input type="password" formControlName="password" placeholder="Contraseña" class="custom-input"/>
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control>
+                    <button nz-button nzType="primary" nzBlock [disabled]="loginForm.invalid" class="login-button">Iniciar sesión</button>
                 </nz-form-control>
             </nz-form-item>
          </form>
