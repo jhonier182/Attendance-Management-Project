@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './basic-services/auth.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { UserStorageService } from './basic-services/user-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent {
 
   constructor(private fb: FormBuilder,
               private authService: AuthService,
-              private message: NzMessageService) {}
+              private message: NzMessageService,
+              private router: Router) {}
 
   ngOnInit() {
     // Inicializa el formulario con validaciones
@@ -31,6 +33,13 @@ export class LoginComponent {
     // Envía los datos del formulario al servicio de autenticación
     this.authService.loginUser(this.loginForm.value).subscribe(res => {
       UserStorageService.saveUser(res);
+      if(UserStorageService.isAdminLoggedIn()){
+        this.router.navigateByUrl('/admin/dashboard');
+      }else if(UserStorageService.isManagerLoggedIn()){
+        this.router.navigateByUrl('/manager/dashboard');
+      }else if(UserStorageService.isEmployeeLoggedIn()){
+        this.router.navigateByUrl('/employee/dashboard');
+      }
      this.message.success('Bienvenido',
        { nzDuration: 3000 });
     }, (error: any) => {
